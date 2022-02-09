@@ -107,4 +107,6 @@ def clean_dataframe(df):
 
     df = df.reset_index()
 
+    del df['index']
+
     return(df)

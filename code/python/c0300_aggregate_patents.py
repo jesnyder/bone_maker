@@ -36,6 +36,9 @@ def aggregate_patents():
   df_aggregated.reset_index()
 
   df_file = os.path.join(retrieve_path('df_aggregated'), 'agg' + '.csv')
+  print('df_file = ' + str(df_file))
+  print('df_aggregated = ')
+  print(df_aggregated)
   df_aggregated.to_csv(df_file)
 
   print('completed aggregate_patents')

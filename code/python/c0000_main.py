@@ -1,6 +1,3 @@
-from c0100_scrape_gscholar import scrape_gscholar
-from c0200_scrape_clinical import scrape_clinical
-
 from c0200_query_patents import query_patents
 from c0300_aggregate_patents import aggregate_patents
 from c0400_check_claims import check_claims
@@ -39,6 +36,8 @@ def main():
     if 7 in tasks:  plot_patents()
     if 8 in tasks:  map_patents()
     if 9 in tasks:  count_words()
+
+
 
     if 11 in tasks: build_webpage()
 

@@ -79,19 +79,53 @@ def introduction_html():
 
     f.write('<h2>' + str('Objective & Tasks') + '</h2>' + '\n')
     f.write('<p>' + str('The objective is to query, scrape, and analyze the US Patent and Trademark Office for bone tissue engineering related articles and then examine that resource for trends.' ))
+
+    f.write('</center>' + '\n')
     f.write(str('The tasks to complete are: ') + '\n')
-    f.write('\n' + str('(1) Build: Query the US Patent and Trademark database for bone tissue engineering terms, such as craniofacial, biomanufacturing, tissue engineering, biofabrication, osseointegration, mandible, and osteoconductive. '))
-    f.write('\n' + str('(2) Clean: Aggregate unique patents specific to area of interest. Patents must have 3 of the following terms (in addition to one of the search terms) to be included in further analysis. Terms include:  regenerative medicine, tissue engineering, bone, scaffold, orthodontic, biocompatible, biodegradable, and tissue scaffold.'))
-    f.write('\n' + str('(3) Define: Define the size of the database. Plot the number of patents per year (annual and cumulative).'))
-    f.write('\n' + str('(4) Geolocation: Define the geographic footprint of the database. Map the assignee address of the patents per year.'))
-    f.write('\n' + str('(5) Historical Material Usage: Plot the occurrances of specific materials in the patent database (annual and cumulative).'))
-    f.write('\n' + str('(6) Text Analysis: Count the frequency of words to identify the most prominent materials, products, pore shapes, sizes, and use cases by text analysis.'))
-    f.write('\n' + str('*** not yet completed ***'))
-    f.write('\n' + str('(7) Cross-reference Google Scholar for cited-by metric to identify most impactful work.'))
-    f.write('\n' + str('(8) Plot occurances of the terms found in '))
-    f.write('\n' + str(''))
     f.write('</p>' + '\n')
+
+    f.write(str('<ol>'))
+
+    f.write('\n' + str('<li>'))
+    f.write('\n' + str(' Build: Query the US Patent and Trademark database for bone tissue engineering terms, such as craniofacial, biomanufacturing, tissue engineering, biofabrication, osseointegration, mandible, and osteoconductive. '))
+    f.write('\n' + str('</li>'))
+
+    f.write('\n' + str('<li>'))
+    f.write('\n' + str(' Clean: Aggregate unique patents specific to area of interest. Patents must have 3 of the following terms (in addition to one of the search terms) to be included in further analysis. Terms include:  regenerative medicine, tissue engineering, bone, scaffold, orthodontic, biocompatible, biodegradable, and tissue scaffold.'))
+    f.write('\n' + str('</li>'))
+
+    f.write('\n' + str('<li>'))
+    f.write('\n' + str(' Define: Define the size of the database. Plot the number of patents per year (annual and cumulative).'))
+    f.write('\n' + str('</li>'))
+
+    f.write('\n' + str('<li>'))
+    f.write('\n' + str(' Geolocation: Define the geographic footprint of the database. Map the assignee address of the patents per year.'))
+    f.write('\n' + str('</li>'))
+
+    f.write('\n' + str('<li>'))
+    f.write('\n' + str(' Historical Material Usage: Plot the occurrances of specific materials in the patent database (annual and cumulative).'))
+    f.write('\n' + str('</li>'))
+
+    f.write('\n' + str('<li>'))
+    f.write('\n' + str(' Text Analysis: Count the frequency of words to identify the most prominent materials, products, pore shapes, sizes, and use cases by text analysis.'))
+    f.write('\n' + str('</li>'))
+
+    f.write('\n' + str('*** not yet completed ***'))
+
+    f.write('\n' + str('<li>'))
+    f.write('\n' + str(' Cross-reference Google Scholar for cited-by metric to identify most impactful work.'))
+    f.write('\n' + str('</li>'))
+
+    f.write('\n' + str('<li>'))
+    f.write('\n' + str(' Plot occurances of the terms found in '))
+    f.write('\n' + str('</li>'))
+
+    f.write('\n' + str(''))
+    f.write(str('</ol>)'))
+
     f.write('</body>' + '\n')
+
+    f.write('<center>' + '\n')
 
     f.write('<h2>' + str('The History of Bone Tissue Engineering in the Patent Archive') + '</h2>' + '\n')
 
@@ -108,11 +142,11 @@ def introduction_html():
     f.write('with the US Patent and Trademark Office over a ' + str(year_span) + ' year span, from ')
     f.write(str(str(year_min) + '-' + str(year_max) + '.') + '</p>' + '\n')
 
-    f.write('<img alt="My Image" src="' + '../')
+    f.write('<img alt="My Image" src="' + '')
     f.write(str(retrieve_path('all_patents_vs_year')))
     f.write('" />')
 
-    f.write('<img alt="My Image" src="' + '../')
+    f.write('<img alt="My Image" src="' + '')
     f.write(str(retrieve_path('material_count_yearly')))
     f.write('" />')
 
@@ -127,17 +161,48 @@ def introduction_html():
     f.write('<h2>' + str('Map of Bone Tissue Engineering in the Patent Archive') + '</h2>' + '\n')
 
     # Insert map gif
-    f.write('<img alt="My Image" src="' + '../')
+    f.write('<img alt="My Image" src="' + '')
     f.write(str(retrieve_path('map_gif')))
     f.write('" />')
-
     # Insert static image of the current map
-    f.write('<img alt="My Image" src="' + '../')
+    f.write('<img alt="My Image" src="' + '')
     f.write(str(retrieve_path('map_patent')))
     f.write('" />')
     f.write('</div>')
     f.write('</center>' + '\n')
     f.write('</body>' + '\n')
+
+    path = retrieve_path('scaffold_design_elements')
+    for file in os.listdir(path):
+
+        path_file = os.path.join(path, file)
+        print('path_file = ' + str(path_file))
+        df = pd.read_csv(path_file)
+        # identify if scaffold parameters found in each patent
+        col_name = list(df.columns)[0]
+        terms = list(df[col_name])
+
+
+        f.write('<div>')
+        f.write('<body>' + '\n')
+        f.write('<center>' + '\n')
+
+        # Insert static image of the current map
+        f.write('<img alt="My Image" src="' + '')
+        df_file = os.path.join(retrieve_path('plot_term_cumulative'), col_name + '.png')
+        f.write(str(df_file))
+        f.write('" />')
+        f.write('<img alt="My Image" src="' + '')
+        df_file = os.path.join(retrieve_path('plot_term_yearly'), col_name + '.png')
+        f.write(str(df_file))
+        f.write('" />')
+        f.write('<img alt="My Image" src="' + '')
+        df_file = os.path.join(retrieve_path('term_percentage_bar'), col_name + '.png')
+        f.write(str(df_file))
+        f.write('" />')
+        f.write('</center>' + '\n')
+        f.write('</body>' + '\n')
+        f.write('</div>')
 
     # For all metadat, make a chart
     file_list = os.listdir(retrieve_path('count_patent'))

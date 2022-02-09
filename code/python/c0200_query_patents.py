@@ -18,7 +18,11 @@ def query_patents():
 
   conn = pypatent.WebConnection(use_selenium=False, user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36')
 
-  search_terms = ['craniofacial', 'biomanufacturing', 'tissue engineering', 'biofabrication', 'osseointegration', 'mandible', 'osteoconductive']
+  # search_terms
+  path = retrieve_path('search_terms')
+  df = pd.read_csv(path)
+  search_terms = list(df['search_terms'])
+  # search_terms = ['craniofacial', 'biomanufacturing', 'tissue engineering', 'biofabrication', 'osseointegration', 'mandible', 'osteoconductive']
   result_limits = [10, 50, 100, 500, 1000, 5000, 300000]
 
   for term in search_terms:
@@ -36,6 +40,7 @@ def query_patents():
           print(len(list(df['url'])))
 
           df_patent = os.path.join(retrieve_path('df_patent'), term + '-' + str(result_limit) + '.csv')
+          print('file saved to df_patent = ' + str(df_patent))
           df.to_csv(df_patent)
 
           my_list = df.columns.values.tolist()

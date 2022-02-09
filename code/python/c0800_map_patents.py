@@ -50,6 +50,7 @@ def map_patents():
     extent = [-170, 190, -58, 108]
     axes.imshow(img, extent=extent)
 
+    count = 0
     for i in range(len(lats)):
 
         print('% complete = ' + str(100*i/len(lats)))
@@ -58,13 +59,14 @@ def map_patents():
             num = len(urls[i])
             colorMarker, colorEdge, colorTransparency = find_color(num)
             plt.scatter(float(lons[i]) , float(lats[i]), color=colorMarker, edgecolors=colorEdge, alpha=float(colorTransparency))
+            count = count + 1
         except:
             print('skipped')
 
     axes.axis('off')
 
     plt.rcParams.update({'font.size': 10})
-    plt.title('Maps of Bone Tissue Engineering Patents from ' + str(min(list(df['patent_year']))) + '-' + str(max(list(df['patent_year']))))
+    plt.title('Maps of Patents from ' + str(min(list(df['patent_year']))) + '-' + str(max(list(df['patent_year'])))+ '-' + str(year) + ' (' + str(count) + ' patents )')
     df_file = os.path.join(retrieve_path('map_patent'))
     plt.savefig(df_file, bbox_inches='tight', dpi=600, edgecolor = 'w')
 
@@ -101,6 +103,7 @@ def yearly_map(df):
         extent = [-170, 190, -58, 108]
         axes.imshow(img, extent=extent)
 
+        count = 0
         for i in range(len(lats)):
 
             print('% complete = ' + str(100*i/len(lats)))
@@ -109,13 +112,14 @@ def yearly_map(df):
                 num = len(urls[i])
                 colorMarker, colorEdge, colorTransparency = find_color(num)
                 plt.scatter(float(lons[i]) , float(lats[i]), color=colorMarker, edgecolors=colorEdge, alpha=float(colorTransparency))
+                count = count + 1
             except:
                 print('skipped')
 
         axes.axis('off')
 
         plt.rcParams.update({'font.size': 10})
-        plt.title('Maps of Bone Tissue Engineering Patents from ' + str(min(list(df['patent_year']))) + '-' + str(year))
+        plt.title('Maps of Patents from ' + str(min(list(df['patent_year']))) + '-' + str(year) + ' (' + str(count) + ' patents)')
         df_file = os.path.join(retrieve_path('df_map_yearly'), str(year) + '.png')
         plt.savefig(df_file, bbox_inches='tight', dpi=600, edgecolor = 'w')
 
