@@ -31,7 +31,7 @@ df_map_yearly,program_generated patent 08_map yearly
 map_patent,program_generated patent 08_map all_years.png
 map_gif,program_generated patent 08_map gif patent.gif
 
-#, 10 term count
+#, 09 term count
 word_count_all,program_generated patent 10_count_term count_term_all.csv
 word_count_per_patent,program_generated patent 10_count_term terms
 term_count_yearly,program_generated patent 10_count_term yearly
@@ -45,6 +45,10 @@ word_count_material,program_generated patent 10_count_term materials.csv
 material_count_yearly,program_generated patent 10_count_term plot material_count_yearly.png
 material_count_yearly_df,program_generated patent 10_count_term plot df material_count_yearly.csv
 material_count_yearly_bar,program_generated patent 10_count_term plot material_count_yearly_bar.png
+
+#, 10 scrape google scholar
+json_gscholar_patent,program_generated gscholar patent json
+df_gscholar_patent,program_generated gscholar patent df
 
 #, 11 files for the webpage
 index_html,index.html

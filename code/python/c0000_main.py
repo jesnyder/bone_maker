@@ -6,6 +6,7 @@ from c0600_count_metadata import count_metadata
 from c0700_plot_patents import plot_patents
 from c0800_map_patents import map_patents
 from c0900_count_words import count_words
+from c1000_query_gscholar import query_gscholar
 from c1100_build_webpage import build_webpage
 
 def main():
@@ -37,7 +38,7 @@ def main():
     if 8 in tasks:  map_patents()
     if 9 in tasks:  count_words()
 
-
+    if 10 in tasks: query_gscholar()
 
     if 11 in tasks: build_webpage()
 

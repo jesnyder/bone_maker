@@ -6,6 +6,8 @@ import pandas as pd
 from c0001_retrieve_meta import retrieve_path
 from c0001_retrieve_meta import clean_dataframe
 
+
+
 def count_words():
     """
     count the words
@@ -75,7 +77,7 @@ def plot_term_count(col_name, terms):
     xx = list(df['year'])
     for term in terms:
         yy = list(df[term])
-        plt.scatter(xx, yy, label = term)
+        plt.plot(xx, yy, '-o', label = term)
 
     plt.xlabel('Years')
     plt.ylabel('Yearly Number of Patents')
@@ -103,7 +105,7 @@ def plot_term_cumulative(col_name, terms):
     xx = list(df['year'])
     for term in terms:
         yy = list(df[term])
-        plt.scatter(xx, yy, label = term)
+        plt.plot(xx, yy, '-o',  label = term)
 
     plt.xlabel('Years')
     plt.ylabel('Cumulative Number of Patents')
