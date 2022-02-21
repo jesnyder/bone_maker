@@ -12,8 +12,6 @@ def retrieve_gps(s, parameters):
 
     """
 
-
-
     for i in range(len(parameters)):
 
         url = 'https://nominatim.openstreetmap.org/search/'
@@ -39,8 +37,6 @@ def retrieve_gps(s, parameters):
             lon = None
 
         return(lat, lon)
-
-
 
 
 def findLatLong(df):
